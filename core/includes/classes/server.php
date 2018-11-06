@@ -25,7 +25,7 @@
         {
             global $Connect;
             $conn = $Connect->connectToDB();
-            $Connect->selectDB('webdb', $conn);
+            $Connect->selectDB("webdb", $conn);
 
             $get = $conn->query("SELECT id FROM realms WHERE char_db='". $conn->escape_string($char_db) ."';");
             $row = $get->fetch_assoc();
@@ -37,7 +37,7 @@
         {
             global $Connect;
             $conn = $Connect->connectToDB();
-            $Connect->selectDB('webdb', $conn);
+            $Connect->selectDB("webdb", $conn);
 
             $get = $conn->query("SELECT name FROM realms WHERE char_db='". $conn->escape_string($char_db) ."';");
             $row = $get->fetch_assoc();
@@ -83,6 +83,7 @@
                     {
                         $getAlliance = $conn->query("SELECT COUNT(online) AS online FROM characters WHERE online=1 AND race IN(3, 4, 7, 11, 1, 22);");
                         $alliance = $getAlliance->fetch_assoc();
+
                         if ($alliance['online'] == 0 || empty($alliance['online']))
                         {
                             $per_alliance = 0;
@@ -129,7 +130,7 @@
                     $getChars = $conn->query("SELECT COUNT(online) AS online FROM characters WHERE online=1;");
 
                     $pOnline  = $getChars->fetch_assoc();
-                    if ($pOnline['online'] > 1) 
+                    if ($pOnline['online'] > 1 || $pOnline['online'] == 0) 
                     {
                         echo "<td><b>". $pOnline['online'] ."</b> Players Online</td>";
                     }
@@ -137,17 +138,12 @@
                     {
                         echo "<td><b>". $pOnline['online'] ."</b> Player Online</td>";
                     }
-                    else
-                    {
-                        echo "<td>No One Online</td>";
-                    }
-                    
                 }
 
                 //Get uptime
                 if ($GLOBALS['serverStatus']['uptime'] == TRUE)
                 {
-                    $Connect->selectDB('logondb', $conn);
+                    $Connect->selectDB("logondb", $conn);
                     $getUp = $conn->query("SELECT starttime FROM uptime WHERE realmid=". $realmId ." ORDER BY starttime DESC LIMIT 1;");
                     $row   = $getUp->fetch_assoc();
 

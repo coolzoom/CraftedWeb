@@ -22,8 +22,8 @@
 
 
     define('INIT_SITE', TRUE);
-    include('../../includes/misc/headers.php');
-    include('../../includes/configuration.php');
+    include "../../includes/misc/headers.php";
+    include "../../includes/configuration.php";
 
 ###############################
     if (isset($_POST['test']))

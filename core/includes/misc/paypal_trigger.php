@@ -21,8 +21,8 @@
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
     define('INIT_SITE', TRUE);
-    require('../configuration.php');
-    require('connect.php');
+    require "../configuration.php";
+    require "connect.php";
 
     global $Connect;
     $conn = $Connect->connectToDB();
@@ -52,7 +52,7 @@
     $head .= 'Content-Length: ' . strlen($send) . "\r\n\r\n";
     $fp   = fsockopen('www.paypal.com', 80, $errno, $errstr, 30);
 
-    $Connect->selectDB('webdb', $conn);
+    $Connect->selectDB("webdb", $conn);
 
     if ($fp !== false)
     {
@@ -125,10 +125,10 @@
             $headers = 'From: ' . $GLOBALS['default_email'] . '' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
 
-            if ($GLOBALS['donation']['emailResponse'] == true)
+            if ($GLOBALS['donation']['emailResponse'] == TRUE)
             {
                 mail($to, $subject, $message, $headers);
-                if ($GLOBALS['donation']['sendResponseCopy'] == true)
+                if ($GLOBALS['donation']['sendResponseCopy'] == TRUE)
                 {
                     mail($GLOBALS['donation']['copyTo'], $subject, $message, $headers);
                 }

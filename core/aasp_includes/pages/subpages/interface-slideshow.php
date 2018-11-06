@@ -22,7 +22,7 @@
 
   global $GamePage, $GameServer;
   $conn = $GameServer->connect();
-  $GameServer->selectDB('webdb', $conn);
+  $GameServer->selectDB("webdb", $conn);
 ?>
 <div class="box_right_title"><?php echo $GamePage->titleLink(); ?> &raquo; Slideshow</div>
 <?php

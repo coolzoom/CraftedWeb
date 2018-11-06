@@ -133,15 +133,13 @@ Default means that you can leave the field blank and it will be given the value 
 
 
     <tr><td colspan="8"> <hr> </td></tr>
-
-
     <tr>
-
       <th></th>
 
       <th>
         Realmlist:<br>
-        <input type="text" placeholder="Default: logon.yourserver.com" id="realmlist" required></th>
+        <input type="text" placeholder="Default: logon.yourserver.com" id="realmlist" required>
+      </th>
 
       <th>
         Website Domain:<br>
@@ -163,9 +161,7 @@ Default means that you can leave the field blank and it will be given the value 
           <option value="5">Legion</option>
         </select>
       </th>
-
     </tr>
-
 
     <tr>
       <th></th>
@@ -193,7 +189,6 @@ Default means that you can leave the field blank and it will be given the value 
     </tr>
 
     <tr>
-
       <td></td>
 
       <th>

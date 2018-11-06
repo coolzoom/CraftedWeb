@@ -66,5 +66,5 @@
             </tr>
         </table>
         <hr/>
-        <a href="?p=users&s=manage" class="content_hider">Manage Users</a>
+        <a href="?page=users&selected=manage" class="content_hider">Manage Users</a>
     <?php } ?>

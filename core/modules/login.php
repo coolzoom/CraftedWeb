@@ -39,8 +39,8 @@
             <br/>
             <table width="100%">
                 <tr>
-                    <td><a href="?p=register">Create an account</a></td>
-                    <td align="right"><a href="?p=forgotpw">Forgot your Password?</a></td>
+                    <td><a href="?page=register">Create an account</a></td>
+                    <td align="right"><a href="?page=forgotpw">Forgot your Password?</a></td>
                 </tr>
             </table>
         </div>

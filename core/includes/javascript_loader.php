@@ -26,7 +26,7 @@
 <?php
 
 ####SHOP CARTS####
-    if ($_GET['p'] == ' donateshop')
+    if ($_GET['page'] == ' donateshop')
     {
         ?>
         <script type="text/javascript">
@@ -39,7 +39,7 @@
 
     }
 
-    if ($_GET['p'] == 'voteshop')
+    if ($_GET['page'] == 'voteshop')
     {
         ?>
         <script type="text/javascript">
@@ -52,7 +52,7 @@
 
     }
 
-    if ($GLOBALS['enableSlideShow'] == true)
+    if ($GLOBALS['enableSlideShow'] == TRUE)
     {
         ?>
         <script type="text/javascript" src="core/javascript/slideshow.js"></script>
@@ -69,7 +69,7 @@
     }
 
 ####CURSOR TRACKER####
-    if ($_GET['p'] == 'donateshop' || $_GET['p'] == 'voteshop')
+    if ($_GET['page'] == 'donateshop' || $_GET['page'] == 'voteshop')
     {
         ?>
         <script type="text/javascript">
@@ -100,13 +100,13 @@
     }
 
 ####SERVER STATUS######
-    if ($GLOBALS['serverStatus']['enable'] == true)
+    if ($GLOBALS['serverStatus']['enable'] == TRUE)
     {
         ?>
         <script type="text/javascript">
             $(document).ready(function ()
             {
-                $.post("core/includes/scripts/misc.php", {serverStatus: true},
+                $.post("core/includes/scripts/misc.php", {serverStatus: TRUE},
                         function (data)
                         {
                             $("#server_status").html(data);

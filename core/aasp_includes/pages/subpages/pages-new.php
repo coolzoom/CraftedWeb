@@ -22,7 +22,7 @@
 
     global $GamePage, $GameServer;
     $conn = $GameServer->connect();
-    $GameServer->selectDB('webdb', $conn);
+    $GameServer->selectDB("webdb", $conn);
     if (isset($_POST['newpage']))
     {
         $name     = $conn->escape_string($_POST['newpage_name']);
@@ -38,15 +38,15 @@
             $conn->query("INSERT INTO custom_pages (name, filename, content, date) VALUES 
               ('". $name ."', '". $filename ."', '". $content ."', '". date("Y-m-d H:i:s") ."');");
 
-            echo "<h3>The Page Was Successfully Created.</h3><a href='../?p=". $filename ."' target='_blank'>View Page</a><br/><br/>";
+            echo "<h3>The Page Was Successfully Created.</h3><a href='../?page=". $filename ."' target='_blank'>View Page</a><br/><br/>";
         }
     }
 ?>
 <div class="box_right_title"><?php echo $GamePage->titleLink(); ?> &raquo; New page</div>
-<form action="?p=pages&s=new" method="post">
+<form action="?page=pages&selected=new" method="post">
     Name <br/>
     <input type="text" name="newpage_name"><br/>
-    Filename <i>(This Is What The ?p=FILENAME Will Refer To. Eg. ?p=connect Where Filename Is 'connect')<br/>
+    Filename <i>(This Is What The ?page=FILENAME Will Refer To. Eg. ?page=connect Where Filename Is 'connect')<br/>
         <input type="text" name="newpage_filename"><br/>
         Content<br/>
         <textarea cols="77" rows="14" id="wysiwyg" name="newpage_content">

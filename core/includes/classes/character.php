@@ -162,7 +162,7 @@
                     if ($Account->hasDP($_SESSION['cw_user'], $GLOBALS['service']['instant80']['price']) == FALSE)
                     {
                         echo '<b class="red_text">Not enough ' . $GLOBALS['donation']['coins_name'] . '</b>';
-                        $error = true;
+                        $error = TRUE;
                     }
                 }
                 elseif ($service_values[1] == "vp")
@@ -170,11 +170,11 @@
                     if ($Account->hasVP($_SESSION['cw_user'], $GLOBALS['service']['instant80']['price']) == FALSE)
                     {
                         echo '<b class="red_text">Not enough Vote Points.</b>';
-                        $error = true;
+                        $error = TRUE;
                     }
                 }
 
-                if ($error != true)
+                if ($error != TRUE)
                 {
                     //User got coins. Boost them up to 80 :D
                     $Connect->connectToRealmDB($values[1]);

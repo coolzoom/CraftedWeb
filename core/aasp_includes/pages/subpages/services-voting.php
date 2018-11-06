@@ -22,7 +22,7 @@
 
     global $GamePage, $GameServer, $GameAccount;
     $conn = $GameServer->connect();
-    $GameServer->selectDB('webdb', $conn);
+    $GameServer->selectDB("webdb", $conn);
 ?> 
 <div class="box_right_title">Voting Links</div>
 <table class="center">

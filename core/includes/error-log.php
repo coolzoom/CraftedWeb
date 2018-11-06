@@ -21,7 +21,7 @@
 ?>
 <?php
     define('INIT_SITE', TRUE);
-    require('configuration.php');
+    require "configuration.php";
 
     if ($GLOBALS['useDebug'] == false)
     {
@@ -38,7 +38,7 @@
     if (isset($_GET['action']) && $_GET['action'] == 'clear')
     {
         $errFile    = '../error.log';
-        $fh         = fopen($errFile, 'w') or die("can't open file");
+        $fh         = fopen($errFile, 'w') or die("Can't open error file.");
         $stringData = "";
         fwrite($fh, $stringData);
         fclose($fh);

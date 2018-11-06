@@ -33,7 +33,7 @@ You currently have <b><?php echo $Account->loadVP($_SESSION['cw_user']); ?></b> 
 
 <hr/>
 
-<form action="?p=convert" method="post">
+<form action="?page=convert" method="post">
     <table>
         <tr>
             <td>
@@ -89,7 +89,7 @@ You currently have <b><?php echo $Account->loadVP($_SESSION['cw_user']); ?></b> 
 
             $Account->logThis("Converted " . $vp . " Vote Points into " . $dp . " " . $GLOBALS['donation']['coins_name'], "currencyconvert", NULL);
 
-            header("Location: ?p=convert");
+            header("Location: ?page=convert");
         }
     }
 ?>

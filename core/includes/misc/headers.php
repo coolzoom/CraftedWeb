@@ -39,5 +39,5 @@
     error_reporting(E_ALL);
 
 // Start microtime.
-    $start = microtime(true);
+    $start = microtime(TRUE);
     

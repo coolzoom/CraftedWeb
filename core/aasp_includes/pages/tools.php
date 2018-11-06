@@ -35,7 +35,7 @@
 
         <pre>The Script Might Have Redirected You Wrong. Or... Did You Try To HACK!? Anyways, Good Luck..</pre>
 
-        <a href="?p=tools&s=tickets" class="content_hider">Tickets</a>
-        <a href="?p=tools&s=accountaccess" class="content_hider">Account Access</a>
+        <a href="?page=tools&selected=tickets" class="content_hider">Tickets</a>
+        <a href="?page=tools&selected=accountaccess" class="content_hider">Account Access</a>
         <?php
     }

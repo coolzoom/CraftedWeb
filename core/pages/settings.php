@@ -28,7 +28,7 @@
     }
 ?>
 <div class='box_two_title'>Change Email</div>
-<form action="?p=settings" method="post">
+<form action="?page=settings" method="post">
     <table width="70%">
         <tr>
             <td>Email adress:</td> 

@@ -46,7 +46,7 @@
                         <option value="dp" <?php if ($row['currency'] == 'dp') echo 'selected'; ?>><?php echo $GLOBALS['donation']['coins_name']; ?></option>
                     </select></td>
                 <td><select style="width: 150px;" id="<?php echo $row['service']; ?>_enabled">
-                        <option value="true" <?php if ($row['enabled'] == 'TRUE') echo 'selected'; ?>>Enabled</option>
+                        <option value="TRUE" <?php if ($row['enabled'] == 'TRUE') echo 'selected'; ?>>Enabled</option>
                         <option value="false" <?php if ($row['enabled'] == 'FALSE') echo 'selected'; ?>>Disabled</option>
                     </select></td>
                 <td><input type="submit" value="Save" onclick="saveServicePrice('<?php echo $row['service']; ?>')"/>

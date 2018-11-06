@@ -20,22 +20,24 @@
 #                  anywhere unless you were given permission.                 
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
-    require('core/includes/misc/headers.php'); //Load sessions, erorr reporting & ob.
+    require "core/includes/misc/headers.php"; //Load sessions, error reporting & ob.
 
-    if (file_exists("install/index.php"))
+    if ( file_exists("install/index.php") )
     {
         header("Location: install/index.php");
+        exit;
     }
 
     define('INIT_SITE', TRUE);
 
-    require('core/includes/configuration.php'); //Load configuration file
+    require "core/includes/configuration.php"; //Load configuration file
 
-    if (isset($GLOBALS['not_installed']) && $GLOBALS['not_installed'] == true)
+    if ( isset($GLOBALS['not_installed']) && $GLOBALS['not_installed'] == TRUE )
     {
-        if (file_exists('install/index.php'))
+        if ( file_exists('install/index.php') )
         {
             header("Location: install/index.php");
+            exit;
         }
         else
         {
@@ -43,28 +45,28 @@
         }
     }
 
-    if ($GLOBALS['maintainance'] == TRUE && !in_array($_SERVER['REMOTE_ADDR'], $GLOBALS['maintainance_allowIPs']))
+    if ( $GLOBALS['maintainance'] == TRUE && !in_array($_SERVER['REMOTE_ADDR'], $GLOBALS['maintainance_allowIPs']) )
     {
         die(
             htmlentities("<center><h3>Website Maintainance</h3>". $GLOBALS['website_title'] ." is currently undergoing some major maintainance and will be available as soon as possible.<br/><br/>Sincerely</center>"));
     }
 
-    require('core/includes/misc/connect.php'); //Load connection class
+    require "core/includes/misc/connect.php"; //Load connection class
 
     global $Connect;
 
     $conn = $Connect->connectToDB();
 
-    require('core/includes/misc/func_lib.php');
-    require('core/includes/misc/compress.php');
+    require "core/includes/misc/func_lib.php";
+    require "core/includes/misc/compress.php";
 
-    require('core/includes/classes/account.php');
-    require('core/includes/classes/server.php');
-    require('core/includes/classes/website.php');
-    require('core/includes/classes/shop.php');
-    require('core/includes/classes/character.php');
-    require('core/includes/classes/cache.php');
-    require('core/includes/classes/plugins.php');
+    require "core/includes/classes/account.php";
+    require "core/includes/classes/server.php";
+    require "core/includes/classes/website.php";
+    require "core/includes/classes/shop.php";
+    require "core/includes/classes/character.php";
+    require "core/includes/classes/cache.php";
+    require "core/includes/classes/plugins.php";
 
     global $Plugins, $Account, $Website;
 
@@ -78,17 +80,17 @@
     $Plugins->init("pages");
 
 //Load configs.
-    if ($GLOBALS['enablePlugins'] == true)
+    if ( $GLOBALS['enablePlugins'] == TRUE )
     {
-        if ($_SESSION['loaded_plugins'] != NULL)
+        if ( $_SESSION['loaded_plugins'] != NULL )
         {
-            if (is_array($_SESSION['loaded_plugins']) || is_object($_SESSION['loaded_plugins']))
+            if ( is_array($_SESSION['loaded_plugins']) || is_object($_SESSION['loaded_plugins']) )
             {
                 foreach ($_SESSION['loaded_plugins'] as $folderName)
                 {
-                    if (file_exists("core/plugins/". $folderName ."/config.php"))
+                    if ( file_exists("core/plugins/". $folderName ."/config.php") )
                     {
-                        include_once("core/plugins/". $folderName ."/config.php");
+                        include_once "core/plugins/". $folderName ."/config.php";
                     }
                 }
             }
@@ -96,18 +98,19 @@
     }
 
     $Account->getRemember(); //Remember thingy.
-//This is to prevent the error "Undefined index: p"
-    if (!isset($_GET['p']))
+    
+    //This is to prevent the error "Undefined index: p"
+    if ( !isset($_GET['page']) )
     {
-        $_GET['p'] = 'home';
+        $_GET['page'] = 'home';
     }
 
 ###VOTING SYSTEM####
-    if (isset($_SESSION['votingUrlID']) && $_SESSION['votingUrlID'] != 0 && $GLOBALS['vote']['type'] == 'confirm')
+    if ( isset($_SESSION['votingUrlID']) && $_SESSION['votingUrlID'] != 0 && $GLOBALS['vote']['type'] == 'confirm' )
     {
-        if ($Website->checkIfVoted($conn->escape_string($_SESSION['votingUrlID']), $GLOBALS['connection']['webdb']) == TRUE)
+        if ( $Website->checkIfVoted($conn->escape_string($_SESSION['votingUrlID']), $GLOBALS['connection']['webdb']) == TRUE )
         {
-            die(htmlentities("?p=vote"));
+            die(htmlentities("?page=vote"));
         }
 
         $acct_id = $Account->getAccountID($_SESSION['cw_user']);
@@ -134,7 +137,7 @@
 
         unset($_SESSION['votingUrlID']);
 
-        header("Location: ?p=vote");
+        header("Location: ?page=vote");
     }
 
 ###SESSION SECURITY###
@@ -146,7 +149,7 @@
     {
         if ($_SESSION['last_ip'] != $_SERVER['REMOTE_ADDR'])
         {
-            header("Location: ?p=logout");
+            header("Location: ?page=logout");
         }
         else
         {

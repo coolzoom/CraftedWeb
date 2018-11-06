@@ -26,5 +26,5 @@
 
     $playersOnline['moduleResults'] = 10; //Number of players displayed on the module. 0 = All.
 
-    $playersOnline['enablePage']  = true; //false = disable the Players online page. true = enable the Players online page.
+    $playersOnline['enablePage']  = TRUE; //false = disable the Players online page. TRUE = enable the Players online page.
     $playersOnline['pageResults'] = 0; //Number of players displayed on the Players online page. 0 = All.

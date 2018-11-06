@@ -21,9 +21,9 @@ anywhere unless you were given permission.
 � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved. */
 
 define('INIT_SITE', TRUE);
-include('../../includes/misc/headers.php');
-include('../../includes/configuration.php');
-include('../functions.php');
+include "../../includes/misc/headers.php";
+include "../../includes/configuration.php";
+include "../functions.php";
 global $GameServer, $GameAccount;
 $conn = $GameServer->connect();
 

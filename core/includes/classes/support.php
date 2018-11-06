@@ -29,7 +29,7 @@ class Support
     public function loadEmailForm()
     {
         ?><br/>
-        <form action="?p=support&do=email" method="post">
+        <form action="?page=support&do=email" method="post">
             Issue: <br/>
             <select name="issue">
                 <option>Technical Problems</option>

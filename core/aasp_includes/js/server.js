@@ -3,7 +3,7 @@ function test_settings()
 
     showLoader();
 
-    $.post("../core/aasp_includes/scripts/test_settings.php", {test: true},
+    $.post("../core/aasp_includes/scripts/test_settings.php", {test: TRUE},
             function (data)
             {
                 $("#loading").html(data + "<br/><a href='#' onclick='hideLoader()'>Close</a>");
@@ -38,7 +38,7 @@ function edit_realmNow(id)
     $.post("../core/aasp_includes/scripts/realms.php", {action: "edit", id: id, name: name, host: host, port: port, chardb: chardb, new_id: new_id},
             function (data)
             {
-                window.location = '?p=realms&s=manage'
+                window.location = '?page=realms&selected=manage'
             });
 }
 
@@ -60,7 +60,7 @@ function delete_realmNow(id)
     $.post("../core/aasp_includes/scripts/realms.php", {action: "delete", id: id},
             function (data)
             {
-                window.location = '?p=realms&s=manage'
+                window.location = '?page=realms&selected=manage'
             });
 }
 
@@ -103,7 +103,7 @@ function edit_consoleNow(id)
     $.post("../core/aasp_includes/scripts/realms.php", {action: "edit_console", id: id, type: type, user: user, pass: pass},
             function (data)
             {
-                window.location = '?p=realms&s=manage'
+                window.location = '?page=realms&selected=manage'
             });
 
 }
@@ -190,8 +190,8 @@ function openTicketNow(id, db)
 function characterListActions(guid, realmid)
 {
     $("#loading").html("Actions available<br/>\
-	<input type='submit' value='View Inventory' onclick='window.location=\"?p=users&s=inventory&guid=" + guid + "&rid=" + realmid + "&f=equip\"'> \
-	<input type='submit' value='Edit Character' onclick='window.location=\"?p=users&s=viewchar&guid=" + guid + "&rid=" + realmid + "\"'><br/>\
+	<input type='submit' value='View Inventory' onclick='window.location=\"?page=users&selected=inventory&guid=" + guid + "&rid=" + realmid + "&f=equip\"'> \
+	<input type='submit' value='Edit Character' onclick='window.location=\"?page=users&selected=viewchar&guid=" + guid + "&rid=" + realmid + "\"'><br/>\
 	<input type='submit' value='Close' onclick='hideLoader()'>");
 
     showLoader();

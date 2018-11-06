@@ -46,7 +46,7 @@
         public function getConnections()
         {
             $conn = $this->connect();
-            $this->selectDB('logondb', $conn);
+            $this->selectDB("logondb", $conn);
 
             $result = $conn->query("SELECT COUNT(id) AS connections FROM account WHERE online=1;");
             return $result->fetch_assoc()['connections'];
@@ -75,7 +75,7 @@
                 return 0;
             }
             $conn = $this->connect();
-            $this->selectDB('logondb', $conn);
+            $this->selectDB("logondb", $conn);
 
             $getUp = $conn->query("SELECT starttime FROM uptime WHERE realmid=". $realmId ." ORDER BY starttime DESC LIMIT 1;");
             $row   = $getUp->fetch_assoc();
@@ -106,10 +106,10 @@
             return ceil($uptime) ." ". $string;
         }
         
-        public function getServerStatus($realmId, $showText = true)
+        public function getServerStatus($realmId, $showText = TRUE)
         {
             $conn = $this->connect();
-            $this->selectDB('webdb', $conn);
+            $this->selectDB("webdb", $conn);
 
             $realmId = $conn->escape_string($realmId);
 
@@ -136,7 +136,7 @@
                 }
                 else
                 {
-                    return true;
+                    return TRUE;
                 }
             }
         }
@@ -144,7 +144,7 @@
         public function getGMSOnline()
         {
             $conn = $this->connect();
-            $this->selectDB('logondb', $conn);
+            $this->selectDB("logondb", $conn);
 
             $result = $conn->query("SELECT COUNT(id) AS GMOnline FROM account WHERE username 
                 IN (SELECT username FROM account WHERE online=1) AND id IN (SELECT id FROM account_access WHERE gmlevel>1);");
@@ -155,7 +155,7 @@
         public function getAccountsCreatedToday()
         {
             $conn = $this->connect();
-            $this->selectDB('logondb', $conn);
+            $this->selectDB("logondb", $conn);
 
             $result = $conn->query("SELECT COUNT(id) AS accountsCreated FROM account WHERE joindate LIKE '%". date("Y-m-d") ."%';");
             $row = $result->fetch_assoc();
@@ -168,7 +168,7 @@
         public function getActiveAccounts()
         {
             $conn = $this->connect();
-            $this->selectDB('logondb', $conn);
+            $this->selectDB("logondb", $conn);
 
             $result = $conn->query("SELECT COUNT(id) AS activeMonth FROM account WHERE last_login LIKE '%". date("Y-m") ."%';");
             $row = $result->fetch_assoc();
@@ -181,7 +181,7 @@
         public function getActiveConnections()
         {
             $conn = $this->connect();
-            $this->selectDB('logondb', $conn);
+            $this->selectDB("logondb", $conn);
 
             $result = $conn->query("SELECT COUNT(id) AS activeConnections FROM account WHERE online='1';");
             $row = $result->fetch_assoc();
@@ -196,7 +196,7 @@
         public function getFactionRatio($rid)
         {
             $conn = $this->connect();
-            $this->selectDB('webdb', $conn);
+            $this->selectDB("webdb", $conn);
 
             $result = $conn->query("SELECT id FROM realms;");
             if ($result->num_rows == 0)
@@ -230,7 +230,7 @@
         public function getAccountsLoggedToday()
         {
             $conn = $this->connect();
-            $this->selectDB('logondb', $conn);
+            $this->selectDB("logondb", $conn);
 
             $result = $conn->query("SELECT COUNT(*) AS accountsToday FROM account WHERE last_login LIKE '%" . date('Y-m-d') . "%'");
             $row = $result->fetch_assoc();
@@ -259,7 +259,7 @@
         public function connectToRealmDB($realmId)
         {
             $conn = $this->connect();
-            $this->selectDB('webdb', $conn);
+            $this->selectDB("webdb", $conn);
 
             $ID = $conn->escape_string($realmId);
             $getRealmData = $conn->query("SELECT mysqli_host, mysqli_user, mysqli_pass, char_db FROM realms WHERE id=". $ID .";");
@@ -308,7 +308,7 @@
         public function getItemName($id)
         {
             $conn = $this->connect();
-            $this->selectDB('worlddb', $conn);
+            $this->selectDB("worlddb", $conn);
 
             $result = $conn->query("SELECT name FROM item_template WHERE entry=". $id .";");
             $row    = $result->fetch_assoc();
@@ -323,7 +323,7 @@
         public function logThis($action, $extended = NULL)
         {
             $conn = $this->connect();
-            $this->selectDB('webdb', $conn);
+            $this->selectDB("webdb", $conn);
             $url = $this->getAddress();
 
             if (isset($_SESSION['cw_admin']))
@@ -394,7 +394,7 @@
                     $soap_port = "7878";
                 }
 
-                $this->selectDB('webdb', $conn);
+                $this->selectDB("webdb", $conn);
                 if($conn->query("INSERT INTO realms 
                     (name, description, char_db, port, rank_user, rank_pass, ra_port, soap_port, host, sendType, mysqli_host, mysqli_user, mysqli_pass) 
                     VALUES 
@@ -428,7 +428,7 @@
         public function getRealmName($realmId)
         {
             $conn = $this->connect();
-            $this->selectDB('webdb', $conn);
+            $this->selectDB("webdb", $conn);
 
             $ID = $conn->escape_string($realmId);
 
@@ -449,7 +449,7 @@
         {
             $conn = $this->connect();
             /* Not used! */
-            $this->selectDB('webdb', $conn);
+            $this->selectDB("webdb", $conn);
 
 
             //Check for old votelogs
@@ -536,7 +536,7 @@
         {
             global $GameServer;
             $conn = $GameServer->connect();
-            $GameServer->selectDB('logondb', $conn);
+            $GameServer->selectDB("logondb", $conn);
 
             $user   = $conn->escape_string($user);
             $result = $conn->query("SELECT id FROM account WHERE username='". $user ."';");
@@ -550,7 +550,7 @@
             global $GameServer;
 
             $conn = $GameServer->connect();
-            $GameServer->selectDB('logondb', $conn);
+            $GameServer->selectDB("logondb", $conn);
 
             $accountId = $conn->escape_string($id);
 
@@ -594,7 +594,7 @@
             $conn = $GameServer->connect();
 
             $accountId = $conn->escape_string($id);
-            $GameServer->selectDB('logondb', $conn);
+            $GameServer->selectDB("logondb", $conn);
 
             $result = $conn->query("SELECT email FROM account WHERE id=". $accountId .";");
             $row    = $result->fetch_assoc();
@@ -606,7 +606,7 @@
         {
             global $GameServer;
             $conn = $GameServer->connect();
-            $GameServer->selectDB('webdb', $conn);
+            $GameServer->selectDB("webdb", $conn);
 
             $accountId = $conn->escape_string($id);
 
@@ -622,7 +622,7 @@
         {
             global $GameServer;
             $conn = $GameServer->connect();
-            $GameServer->selectDB('webdb', $conn);
+            $GameServer->selectDB("webdb", $conn);
 
             $accountId = $conn->escape_string($id);
 
@@ -638,7 +638,7 @@
         {
             global $GameServer;
             $conn = $GameServer->connect();
-            $GameServer->selectDB('logondb', $conn);
+            $GameServer->selectDB("logondb", $conn);
 
             $accountId = $conn->escape_string($id);
 
@@ -707,9 +707,9 @@
         {
             if (isset($_SESSION['cw_staff']) && !isset($_SESSION['cw_admin']))
             {
-                if ($GLOBALS['staffPanel_permissions'][$page] != true)
+                if ($GLOBALS['staffPanel_permissions'][$page] != TRUE)
                 {
-                    header("Location: ?p=notice&e=<h2>Not authorized!</h2>
+                    header("Location: ?page=notice&error=<h2>Not authorized!</h2>
                     You are not allowed to view this page!");
                 }
             }
@@ -717,28 +717,28 @@
 
         public function outputSubPage($panel = null)
         {
-            $page    = $_GET['p'];
+            $page    = $_GET['page'];
             $subpage = $_GET['s'];
             $pages   = scandir('../core/aasp_includes/pages/subpages');
             unset($pages[0], $pages[1]);
 
             if (!file_exists('../core/aasp_includes/pages/subpages/' . $page . '-' . $subpage . '.php'))
             {
-                include('../core/aasp_includes/pages/404.php');
+                include "../core/aasp_includes/pages/404.php";
             }
             elseif (in_array($page . '-' . $subpage . '.php', $pages))
             {
-                include('../core/aasp_includes/pages/subpages/' . $page . '-' . $subpage . '.php');
+                include "../core/aasp_includes/pages/subpages/". $page . "-" . $subpage .".php";
             }
             else
             {
-                include('../core/aasp_includes/pages/404.php');
+                include "../core/aasp_includes/pages/404.php";
             }
         }
 
         public function titleLink()
         {
-            return "<a href='?p=". htmlentities($_GET['p']) ."' title='Back to ". htmlentities(ucfirst($_GET['p'])) ."'>". htmlentities(ucfirst($_GET['p'])) ."</a>";
+            return "<a href='?page=". htmlentities($_GET['page']) ."' title='Back to ". htmlentities(ucfirst($_GET['page'])) ."'>". htmlentities(ucfirst($_GET['page'])) ."</a>";
         }
 
         public function addSlideImage($upload, $path, $url)
@@ -746,7 +746,7 @@
             global $GameServer;
             $conn = $GameServer->connect();
 
-            $GameServer->selectDB('webdb', $conn);
+            $GameServer->selectDB("webdb", $conn);
             $path = $conn->escape_string($path);
             $url  = $conn->escape_string($url);
 
@@ -756,7 +756,7 @@
                 if ($upload['error'] > 0)
                 {
                     echo "<span class='red_text'><b>Error:</b> File uploading was not successfull!</span>";
-                    $abort = true;
+                    $abort = TRUE;
                 }
                 else
                 {
@@ -779,7 +779,7 @@
                     }
                     else
                     {
-                        $abort = true;
+                        $abort = TRUE;
                     }
                 }
             }
@@ -939,7 +939,7 @@
 
     function activeMenu($p)
     {
-        if (isset($_GET['p']) && $_GET['p'] == $p)
+        if (isset($_GET['page']) && $_GET['page'] == $p)
             echo htmlentities("style='display:block;'");
     }
 

@@ -76,5 +76,5 @@
             </tr>
         </table>
         <hr/>
-        <a href="?p=donations&s=browse" class="content_hider">Browse Donations</a>
+        <a href="?page=donations&selected=browse" class="content_hider">Browse Donations</a>
     <?php }

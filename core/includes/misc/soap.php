@@ -20,7 +20,7 @@
 #                  anywhere unless you were given permission.                 
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
-    function sendSoap($command, $username, $password, $host, $soapport)
+    function send_soap($command, $username, $password, $host, $soapport)
     {
 
         $client = new SoapClient(NULL, array(
@@ -42,3 +42,4 @@
             echo "Command failed! Reason:<br />\n";
             echo $e->getMessage();
         }        
+    }

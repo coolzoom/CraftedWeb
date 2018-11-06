@@ -20,9 +20,9 @@
       � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved. */
 
     define('INIT_SITE', TRUE);
-    include('../../includes/misc/headers.php');
-    include('../../includes/configuration.php');
-    include('../functions.php');
+    include "../../includes/misc/headers.php";
+    include "../../includes/configuration.php";
+    include "../functions.php";
 
     global $GameServer, $GameAccount;
     $conn = $GameServer->connect();
@@ -92,7 +92,7 @@
 
             if ($conn->query("INSERT INTO disabled_plugins VALUES('". $foldername ."');"))
             {
-                include('../../core/plugins/' . $foldername . '/info.php');
+                include "../../core/plugins/" . $foldername . "/info.php";
                 $GameServer->logThis("Disabled the plugin " . $title);
             }
             else
@@ -108,7 +108,7 @@
 
             if ($conn->query("DELETE FROM disabled_plugins WHERE foldername='". $foldername ."';"))
             {
-                include('../../core/plugins/' . $foldername . '/info.php');
+                include "../../core/plugins/" . $foldername . "/info.php";
                 $GameServer->logThis("Enabled the plugin -" . $title);
             }
             else

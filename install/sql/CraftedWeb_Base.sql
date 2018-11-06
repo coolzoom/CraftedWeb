@@ -195,11 +195,11 @@ CREATE TABLE IF NOT EXISTS `site_links`
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `site_links` VALUES 
-(1,'Home',        '?p=home',    'always'),
-(2,'Register',    '?p=register','notlogged'),
-(3,'My Account',  '?p=account', 'logged'),
-(4,'Vote',        '?p=vote',    'logged'),
-(5,'Donate',      '?p=donate',  'always'),
+(1,'Home',        '?page=home',    'always'),
+(2,'Register',    '?page=register','notlogged'),
+(3,'My Account',  '?page=account', 'logged'),
+(4,'Vote',        '?page=vote',    'logged'),
+(5,'Donate',      '?page=donate',  'always'),
 (6,'Forum',       '/forum/',    'always');
 
 DROP TABLE IF EXISTS `slider_images`;

@@ -22,7 +22,7 @@
 
     global $GameServer, $GameAccount;
     $conn = $GameServer->connect();
-    $GameServer->selectDB('webdb', $conn);
+    $GameServer->selectDB("webdb", $conn);
 
     $per_page = 20;
 
@@ -49,7 +49,7 @@
       <th>IP</th>
     </tr>
     <?php
-        $GameServer->selectDB('webdb', $conn);
+        $GameServer->selectDB("webdb", $conn);
         $result = $conn->query("SELECT * FROM admin_log ORDER BY id DESC LIMIT ". $start .", ". $per_page .";");
         while ($row    = $result->fetch_assoc())
         { ?>
@@ -68,23 +68,23 @@
         if ($page > 1)
         {
             $prev = $page - 1;
-            echo "<a href='?p=logs&s=admin&page=". $prev ."' title='Previous'>Previous</a> &nbsp;";
+            echo "<a href='?page=logs&selected=admin&log_page=". $prev ."' title='Previous'>Previous</a> &nbsp;";
         }
         for ($x = 1; $x <= $pages; $x++)
         {
             if ($page == $x)
             {
-                echo "<a href='?p=logs&s=admin&page=". $x ."' title='Page ". $x ."'><b>". $x ."</b></a> ";
+                echo "<a href='?page=logs&selected=admin&log_page=". $x ."' title='Page ". $x ."'><b>". $x ."</b></a> ";
             }
             else
             {
-                echo "<a href='?p=logs&s=admin&page=". $x ."' title='Page ". $x ."'>". $x ."</a> ";
+                echo "<a href='?page=logs&selected=admin&log_page=". $x ."' title='Page ". $x ."'>". $x ."</a> ";
             }
         }
 
         if ($page < $x - 1)
         {
             $next = $page + 1;
-            echo "&nbsp; <a href='?p=logs&s=admin&page=". $next ."' title='Next'>Next</a> &nbsp; &nbsp;";
+            echo "&nbsp; <a href='?page=logs&selected=admin&log_page=". $next ."' title='Next'>Next</a> &nbsp; &nbsp;";
         }
     }

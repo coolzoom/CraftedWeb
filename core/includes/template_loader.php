@@ -19,24 +19,30 @@
       anywhere unless you were given permission.
       � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved. */
 
-    require("core/includes/classes/template_parse.php");
+    require "core/includes/classes/template_parse.php";
 
     global $Connect, $Plugins;
     $conn = $Connect->connectToDB();
-    $Connect->selectDB('webdb', $conn);
+    $Connect->selectDB("webdb", $conn);
 
-    $getTemplate = $conn->query("SELECT `path` FROM template WHERE applied='1';");
-
-    $template = $getTemplate->fetch_assoc();
-
-    if (!file_exists("core/styles/". $template['path'] ."/style.css") || !file_exists("core/styles/" . $template['path'] . "/template.html"))
+    if ($getTemplate = $conn->query("SELECT `path` FROM template WHERE applied='1';"))
     {
-      buildError("<b>Template Error: </b>The active template does not exist or missing files. (". $template['path'].")", NULL);
-      exit_page();
-    }
+
+      $template = $getTemplate->fetch_assoc();
+
+      if (!file_exists("core/styles/". $template['path'] ."/style.css") || !file_exists("core/styles/" . $template['path'] . "/template.html"))
+      {
+        buildError("<b>Template Error: </b>The active template does not exist or missing files. (". $template['path'].")", NULL);
+        exit_page();
+      }
 ?>
 <link rel="stylesheet" href="core/styles/<?php echo $template['path']; ?>/style.css" />
 <link rel="stylesheet" href="core/styles/global/style.css" />
 <?php
     $Plugins->load('styles');
+  }
+  else
+  {
+    buildError("<b>Error getting the template's path, see logs for more info.</b>", NULL, $conn->error);
+  }
 ?>

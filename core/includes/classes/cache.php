@@ -48,7 +48,7 @@
           {
             if (file_exists('core/cache/' . $filename . '.cache.php'))
             {
-              include('core/cache/' . $filename . '.cache.php');
+              include "core/cache/". $filename .".cache.php";
             }
             else
             {

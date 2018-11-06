@@ -1,6 +1,6 @@
 # CraftedWeb
 
-CraftedWeb is a CMS for World of Warcraft Servers.
+CraftedWeb was rewritten with PHP 7.2.4
 
 ## Features
 

@@ -24,7 +24,7 @@
         global $Connect, $Website;
         $conn = $Connect->connectToDB();
         $id = $conn->escape_string($_GET['newsid']);
-        $Connect->selectDB('webdb', $conn);
+        $Connect->selectDB("webdb", $conn);
 
         $result = $conn->query("SELECT * FROM news WHERE id=". $id .";");
         $row    = $result->fetch_assoc();
@@ -39,7 +39,7 @@
         <br/><br/>
         <span class='yellow_text'>Written by <b><?php echo $row['author']; ?></b> | <?php echo $row['date']; ?></span>
         <?php
-        if ($GLOBALS['news']['enableComments'] == true)
+        if ($GLOBALS['news']['enableComments'] == TRUE)
         {
             $result = $conn->query("SELECT poster FROM news_comments WHERE newsid=" . $id . " ORDER BY id DESC LIMIT 1;");
             $rows   = $result->fetch_assoc();
@@ -55,7 +55,7 @@
                 <h4 class="yellow_text">Comments</h4>
                 <?php if ($_SESSION['cw_user'])
                 { ?>
-                    <form action="?p=news&newsid=<?php echo $id; ?>" method="post">
+                    <form action="?page=news&newsid=<?php echo $id; ?>" method="post">
                         <table width="100%"> 
                             <tr> 
                                 <td>
@@ -87,11 +87,11 @@
                     $row     = $getAcct->fetch_assoc();
                     $account    = $row['id'];
 
-                    $Connect->selectDB('webdb', $conn);
+                    $Connect->selectDB("webdb", $conn);
                     $conn->query("INSERT INTO news_comments (`newsid`, `text`, `poster`, `ip`) VALUES 
                         (". $id .", '". $text ."', '". $account ."', '". $_SERVER['REMOTE_ADDR'] ."');");
 
-                    header("Location: ?p=news&newsid=". $id);
+                    header("Location: ?page=news&newsid=". $id);
                 }
             }
 
@@ -133,7 +133,7 @@
                             }
 
                             if (isset($_SESSION['cw_gmlevel']) && $_SESSION['cw_gmlevel'] >= $GLOBALS['adminPanel_minlvl'] ||
-                                    isset($_SESSION['cw_gmlevel']) && $_SESSION['cw_gmlevel'] >= $GLOBALS['staffPanel_minlvl'] && $GLOBALS['editNewsComments'] == true)
+                                    isset($_SESSION['cw_gmlevel']) && $_SESSION['cw_gmlevel'] >= $GLOBALS['staffPanel_minlvl'] && $GLOBALS['editNewsComments'] == TRUE)
                                 echo '<br/><br/> ( <a href="#">Edit</a> | <a href="#remove" onclick="removeNewsComment(' . $row['id'] . ')">Remove</a> )';
                             ?>
                             <div class='news_count'>
@@ -180,7 +180,7 @@
 
                                     $text = preg_replace("#((http|https|ftp)://(\S*?\.\S*?))(\s|\;|\)|\]|\[|\{|\}|,|\"|'|:|\<|$|\.\s)#ie", "'<a href=\"$1\" target=\"_blank\">http://$3</a>$4'", $row['body']);
 
-                                    if ($GLOBALS['news']['limitHomeCharacters'] == true)
+                                    if ($GLOBALS['news']['limitHomeCharacters'] == TRUE)
                                     {
                                         echo $Website->limit_characters($text, 200);
                                         $output .= $Website->limit_characters($row['body'], 200);
@@ -195,7 +195,7 @@
 
                                     if ($GLOBALS['news']['enableComments'] == TRUE)
                                     {
-                                        $comments = '| <a href="?p=news&amp;newsid=' . $row['id'] . '">Comments ('. $commentsNum->fetch_assoc()['comments'] .')</a>';
+                                        $comments = '| <a href="?page=news&amp;newsid=' . $row['id'] . '">Comments ('. $commentsNum->fetch_assoc()['comments'] .')</a>';
                                     }
                                     else
                                     {

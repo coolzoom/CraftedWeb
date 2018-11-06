@@ -24,7 +24,7 @@
     $Account->isNotLoggedIn();
 
     /* Declare some general variables */
-    $shopPage     = $conn->escape_string($_GET['p']);
+    $shopPage     = $conn->escape_string($_GET['page']);
     $shopVar      = "vote";
     $shopCurrency = "Vote Points";
 
@@ -33,7 +33,7 @@
 ?>
 <div class='box_two_title'>Vote Shop
 
-    <div id='cartHolder' onclick='window.location = "?p=cart"'>Loading Cart...</div> 
+    <div id='cartHolder' onclick='window.location = "?page=cart"'>Loading Cart...</div> 
     <div id='cartArrow'>
         <img src='styles/default/images/arrow.png' border='none'/></div>
 </div>
@@ -62,7 +62,7 @@
             //Search enabled.
             ?>
             <center>
-                <form action="?p=<?php echo $shopPage; ?>" method="get">
+                <form action="?page=<?php echo $shopPage; ?>" method="get">
                     <input type="hidden" name="p" value="<?php echo $shopPage; ?>">
                     <table> <tr valign="middle">
                             <td><input type="text" onclick="this.value = ''" value="<?php echo $inputValue; ?>" name="search_value"></td>          

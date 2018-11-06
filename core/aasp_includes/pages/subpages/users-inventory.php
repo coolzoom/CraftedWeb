@@ -26,12 +26,12 @@
     <?php echo $GamePage->titleLink(); ?> &raquo; Character Inventory
 </div>
 Showing Inventory Of Character 
-<a href="?p=users&s=viewchar&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>">
+<a href="?page=users&selected=viewchar&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>">
     <?php echo $GameAccount->getCharName($_GET['guid'], $_GET['rid']); ?>
 </a>
 <hr/>
 Filter:
-<a href="?p=users&s=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>&f=equip">
+<a href="?page=users&selected=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>&f=equip">
 <?php
     if (isset($_GET['f']) && $_GET['f'] == "equip")
     {
@@ -49,7 +49,7 @@ Filter:
 
 &nbsp; | &nbsp; 
 
-<a href="?p=users&s=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>&f=bank">
+<a href="?page=users&selected=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>&f=bank">
     <?php
         if (isset($_GET['f']) && $_GET['f'] == "bank")
         {
@@ -67,7 +67,7 @@ Filter:
 
 &nbsp; | &nbsp; 
 
-<a href="?p=users&s=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>&f=keyring">
+<a href="?page=users&selected=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>&f=keyring">
     <?php
         if (isset($_GET['f']) && $_GET['f'] == "keyring")
         {
@@ -85,7 +85,7 @@ Filter:
 
 &nbsp; | &nbsp; 
 
-<a href="?p=users&s=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>&f=currency">
+<a href="?page=users&selected=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>&f=currency">
     <?php
         if (isset($_GET['f']) && $_GET['f'] == "currency")
         {
@@ -103,7 +103,7 @@ Filter:
 
 &nbsp; | &nbsp; 
 
-<a href="?p=users&s=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>">
+<a href="?page=users&selected=inventory&guid=<?php echo $_GET['guid']; ?>&rid=<?php echo $_GET['rid']; ?>">
     <?php
         if (!isset($_GET['f']))
         {

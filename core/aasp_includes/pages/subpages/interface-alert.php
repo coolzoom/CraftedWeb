@@ -21,12 +21,12 @@
 
     global $GamePage;
 
-    if (isset($_POST['update_alert']))
+    if ( isset($_POST['update_alert']) )
     {
         $alert_enable  = $_POST['alert_enable'];
         $alert_message = trim($_POST['alert_message']);
 
-        $alert_enable = ($alert_enable == "on") ? "true" : "false";
+        $alert_enable = ($alert_enable == "on") ? "TRUE" : "false";
 
         $file_content = "<?php
 
@@ -38,7 +38,7 @@
 						";
 
         $fp = fopen('../core/documents/alert.php', 'w');
-        if (fwrite($fp, $file_content))
+        if ( fwrite($fp, $file_content) )
         {
             $msg = "The Alert Message Was Updated!";
         }
@@ -50,14 +50,14 @@
         fclose($fp);
     }
 
-    include('../core/documents/alert.php');
+    include "../core/documents/alert.php";
 ?>
 <div class="box_right_title"><?php echo $GamePage->titleLink(); ?> &raquo; Alert Message</div>
-<form action="?p=interface&s=alert" method="post">
+<form action="?page=interface&selected=alert" method="post">
     <table>
         <tr>
             <td>Enable Alert Message</td>
-            <td><input name="alert_enable" type="checkbox" <?php if ($alert_enabled == true) echo 'checked'; ?> /></td>
+            <td><input name="alert_enable" type="checkbox" <?php if ($alert_enabled == TRUE) echo 'checked'; ?> /></td>
         </tr>
         <tr>
             <td>Alert Message</td>
@@ -67,7 +67,7 @@
             <td></td>
             <td><input type="submit" value="Save" name="update_alert">
                 <?php
-                    if (isset($msg))
+                    if ( isset($msg) )
                     {
                       echo $msg;
                     }

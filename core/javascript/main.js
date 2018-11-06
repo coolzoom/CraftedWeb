@@ -142,9 +142,9 @@ function register(captchastate)
     $("#overlay").fadeIn();
     $('#register').attr('disabled', 'disabled');
 
-    var username = document.getElementById("username").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    var username        = document.getElementById("username").value;
+    var email           = document.getElementById("email").value;
+    var password        = document.getElementById("password").value;
     var password_repeat = document.getElementById("password_repeat").value;
 
     if (captchastate == 1)
@@ -160,8 +160,16 @@ function register(captchastate)
 
     popUp("Account Creation", "Your account is being registered...");
 
-    $.post("includes/scripts/register.php", {register: "true", username: username, email: email, password: password,
-        password_repeat: password_repeat, captcha: captcha, raf: raf},
+    $.post("core/includes/scripts/register.php", 
+        {
+            register: "true", 
+            username: username, 
+            email: email, 
+            password: password,
+            password_repeat: password_repeat, 
+            captcha: captcha, 
+            raf: raf
+        },
             function (data)
             {
                 if (data == true)
@@ -171,7 +179,7 @@ function register(captchastate)
                     $("#email").val("");
                     $("#password").val("");
                     $("#password_repeat").val("");
-                    setTimeout("redirect('?p=account')", 5000);
+                    setTimeout("redirect('?page=account')", 5000);
                 }
                 else
                 {
@@ -188,11 +196,12 @@ function checkUsername()
     $("#username_check").fadeIn();
     $("#username_check").html("Checking for availability...");
 
-    $.post("includes/scripts/register.php", {check: "username", value: username},
-            function (data)
-            {
-                $("#username_check").html(data);
-            });
+    $.post("core/includes/scripts/register.php", 
+        {check: "username", value: username},
+        function (data)
+        {
+            $("#username_check").html(data);
+        });
 }
 
 function acct_services(service)
@@ -207,7 +216,7 @@ function acct_services(service)
 function unstuck(guid, char_db)
 {
     popUp("Proccessing...", "Proccessing...");
-    $.post("includes/scripts/character.php", {action: "unstuck", guid: guid, char_db: char_db},
+    $.post("core/includes/scripts/character.php", {action: "unstuck", guid: guid, char_db: char_db},
         function (data)
         {
             popUp("Unstucked!", "Your character was successfully unstucked!");
@@ -217,7 +226,7 @@ function unstuck(guid, char_db)
 function revive(guid, char_db)
 {
     popUp("Proccessing...", "Proccessing...");
-    $.post("includes/scripts/character.php", {action: "revive", guid: guid, char_db: char_db},
+    $.post("core/includes/scripts/character.php", {action: "revive", guid: guid, char_db: char_db},
         function (data)
         {
             popUp("Revived!", "Your character was successfully revived!");
@@ -233,18 +242,18 @@ function confirmService(guid, realm_id, service, title, name)
 
 function nstepService(guid, realm_id, service, title, name)
 {
-    window.location = '?p=confirmservice&s=' + service + '&guid=' + guid + '&rid=' + realm_id + '&title=' + title + '&name=' + name;
+    window.location = '?page=confirmservice&selected=' + service + '&guid=' + guid + '&rid=' + realm_id + '&title=' + title + '&name=' + name;
 }
 
 function service(guid, realm_id, service)
 {
     popUp("Proccessing...", "Proccessing...");
 
-    $.post("includes/scripts/character.php", {action: "service", guid: guid, realm_id: realm_id, service: service},
+    $.post("core/includes/scripts/character.php", {action: "service", guid: guid, realm_id: realm_id, service: service},
         function (data)
         {
             if (data == true)
-                window.location = '?p=service&s=' + service + '&service=applied'
+                window.location = '?page=service&selected=' + service + '&service=applied'
             else
                 popUp("Information", data);
         });
@@ -252,10 +261,10 @@ function service(guid, realm_id, service)
 
 function removeItemFromCart(cart, entry)
 {
-    $.post("includes/scripts/shop.php", {action: "removeFromCart", cart: cart, entry: entry},
+    $.post("core/includes/scripts/shop.php", {action: "removeFromCart", cart: cart, entry: entry},
         function (data)
         {
-            window.location = '?p=cart';
+            window.location = '?page=cart';
         });
 }
 
@@ -273,7 +282,7 @@ function addCartItem(entry, cart, shop, button)
         arrow = 1;
     }
 
-    $.post("includes/scripts/shop.php", {action: "addShopitem", cart: cart, entry: entry, shop: shop},
+    $.post("core/includes/scripts/shop.php", {action: "addShopitem", cart: cart, entry: entry, shop: shop},
         function (data)
         {
             loadMiniCart(cart);
@@ -288,16 +297,16 @@ function addCartItem(entry, cart, shop, button)
 
 function clearCart()
 {
-    $.post("includes/scripts/shop.php", {action: "clear"},
+    $.post("core/includes/scripts/shop.php", {action: "clear"},
         function (data)
         {
-            window.location = '?p=cart';
+            window.location = '?page=cart';
         });
 }
 
 function loadMiniCart(cart)
 {
-    $.post("includes/scripts/shop.php", {action: "getMinicart", cart: cart},
+    $.post("core/includes/scripts/shop.php", {action: "getMinicart", cart: cart},
         function (data)
         {
             $("#cartHolder").html(data);
@@ -308,10 +317,10 @@ function saveItemQuantityInCart(cart, entry)
 {
     var quantity = document.getElementById(cart + "Quantity-" + entry).value;
 
-    $.post("includes/scripts/shop.php", {action: "saveQuantity", cart: cart, entry: entry, quantity: quantity},
+    $.post("core/includes/scripts/shop.php", {action: "saveQuantity", cart: cart, entry: entry, quantity: quantity},
         function (data)
         {
-            window.location = '?p=cart'
+            window.location = '?page=cart'
         });
 }
 
@@ -320,16 +329,16 @@ function checkout()
     var values = document.getElementById("checkout_values").value;
 
     popUp("Proccessing...", "Proccessing your payment & sending the items...");
-    $.post("includes/scripts/shop.php", {action: "checkout", values: values},
+    $.post("core/includes/scripts/shop.php", {action: "checkout", values: values},
         function (data)
         {
             if (data == true)
             {
-                window.location = '?p=cart&return=true'
+                window.location = '?page=cart&return=true'
             }
             else
             {
-                window.location = '?p=cart&return=' + data;
+                window.location = '?page=cart&return=' + data;
             }
         });
 }
@@ -373,7 +382,7 @@ function selectChar(values, box)
     $("#teleport_to").html("Loading...");
 
 
-    $.post("includes/scripts/character.php", {action: "getLocations", values: values},
+    $.post("core/includes/scripts/character.php", {action: "getLocations", values: values},
         function (data)
         {
             $("#teleport_to").html(data);
@@ -389,7 +398,7 @@ function portTo(locationTo, char_db, character)
 
 function portNow(character, location, char_db)
 {
-    $.post("includes/scripts/character.php", {action: "teleport", character: character, location: location, char_db: char_db},
+    $.post("core/includes/scripts/character.php", {action: "teleport", character: character, location: location, char_db: char_db},
         function (data)
         {
             popUp("Character Teleport", data);
@@ -427,7 +436,7 @@ function removeShopItem(entry, shop)
 function removeShopItemNow(entry, shop)
 {
     popUp("Remove item", "Removing...");
-    $.post("includes/scripts/shop.php", {action: "removeItem", entry: entry, shop: shop},
+    $.post("core/includes/scripts/shop.php", {action: "removeItem", entry: entry, shop: shop},
         function (data)
         {
             closePopup()
@@ -447,7 +456,7 @@ function editShopItemNow(entry, shop)
     var price = document.getElementById("edititem_price").value;
     popUp("Edit item", "Saving...");
 
-    $.post("includes/scripts/shop.php", {action: "editItem", entry: entry, shop: shop, price: price},
+    $.post("core/includes/scripts/shop.php", {action: "editItem", entry: entry, shop: shop, price: price},
         function (data)
         {
             popUp("Edit item", "Saved! Refresh the page to see the result.");

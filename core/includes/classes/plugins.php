@@ -25,7 +25,7 @@
 
         public static function globalInit()
         {
-            if ($GLOBALS['enablePlugins'] == true)
+            if ($GLOBALS['enablePlugins'] == TRUE)
             {
                 if (!isset($_SESSION['loaded_plugins']))
                 {
@@ -42,10 +42,10 @@
                         {
                             if (!in_array($folderName, $bad))
                             {
-                                $Connect->selectDB('webdb', $conn);
+                                $Connect->selectDB("webdb", $conn);
                                 if (file_exists('core/plugins/'. $folderName .'/config.php'))
                                 {
-                                    include('core/plugins/'. $folderName .'/config.php');
+                                    include "core/plugins/". $folderName ."/config.php";
                                 }
 
                                 $loaded_plugins[] = $folderName;
@@ -68,7 +68,7 @@
 
         public static function init($type)
         {
-            if ($GLOBALS['enablePlugins'] == true)
+            if ($GLOBALS['enablePlugins'] == TRUE)
             {
                 if ($_SESSION['loaded_plugins'] != NULL)
                 {
@@ -87,7 +87,7 @@
                             $chk = $conn->query("SELECT COUNT(*) FROM disabled_plugins WHERE foldername='". $conn->escape_string($folderName) ."';");
                             if ($chk->field_seek(0) == 0 && file_exists('plugins/'. $folderName .'/'. $type .'/'))
                             {
-                                $folder = scandir('plugins/'. $folderName .'/'. $type .'/');
+                                $folder = scandir('core/plugins/'. $folderName .'/'. $type .'/');
 
                                 foreach ($folder as $fileName)
                                 {
@@ -107,7 +107,7 @@
 
         public static function load($type)
         {
-            if ($GLOBALS['enablePlugins'] == true)
+            if ($GLOBALS['enablePlugins'] == TRUE)
             {
                 ##########################
                 if ($type == "pages")
@@ -118,15 +118,15 @@
                         foreach ($_SESSION['loaded_plugins_' . $type] as $filename)
                         {
                             $name = basename(substr($filename, 0, -4));
-                            if ($name == $_GET['p'])
+                            if ($name == $_GET['page'])
                             {
-                                include("core/". $filename);
+                                include "core/". $filename;
                                 $count = 1;
                             }
                         }
                     }
 
-                    if ($count == 0) include('core/pages/404.php');
+                    if ($count == 0) include "core/pages/404.php";
                 }
                 ###########################
                 elseif ($type == 'javascript')
@@ -157,7 +157,7 @@
                     {
                         foreach ($_SESSION['loaded_plugins_' . $type] as $filename)
                         {
-                            include("core/". $filename);
+                            include "core/". $filename;
                         }
                     }
                 }

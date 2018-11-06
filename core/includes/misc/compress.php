@@ -20,7 +20,7 @@
 #                  anywhere unless you were given permission.                 
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
-    if ($compression['gzip'] == true)
+    if ($compression['gzip'] == TRUE)
     {
         if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], "gzip"))
         {
@@ -29,7 +29,7 @@
         }
     }
 
-    if ($compression['sanitize_output'] == true)
+    if ($compression['sanitize_output'] == TRUE)
     {
 
         function sanitize_output($buffer)

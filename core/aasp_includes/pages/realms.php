@@ -22,7 +22,7 @@
 
     global $GameServer, $GamePage;
     $conn = $GameServer->connect();
-    $GameServer->selectDB('webdb', $conn);
+    $GameServer->selectDB("webdb", $conn);
 
     $GamePage->validatePageAccess('Realms');
 
@@ -54,7 +54,7 @@
         }
         ?>
 
-        <form action="?p=realms" method="post" style="line-height: 15px;">
+        <form action="?page=realms" method="post" style="line-height: 15px;">
             <b>General Realm Information</b><hr/>
             <!-- 
             Realm ID: <br/>

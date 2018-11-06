@@ -32,11 +32,11 @@
             global $Cache, $Connect, $Website;
             $conn = $Connect->connectToDB();
 
-            if ($GLOBALS['news']['enable'] == true)
+            if ($GLOBALS['news']['enable'] == TRUE)
             {
                 echo "<div class='box_two_title'>Latest News</div>";
 
-                if ($Cache->exists("news") == true)
+                if ($Cache->exists("news") == TRUE)
                 {
                     $Cache->loadCache("news");
                 }
@@ -96,7 +96,7 @@
                                 $Validator = new Validator(array(), array($row['body']), array($row['body']));
                                 $sanatized_text = $Validator->sanatize($row['body'], "string");
 
-                                if ($GLOBALS['news']['limitHomeCharacters'] == true)
+                                if ($GLOBALS['news']['limitHomeCharacters'] == TRUE)
                                 {
                                     echo $Website->limit_characters($sanatized_text, 200);
                                     $output .= $Website->limit_characters($row['body'], 200);
@@ -110,9 +110,9 @@
                                 $result      = $conn->query("SELECT COUNT(id) FROM news_comments WHERE newsid=". $row['id'] .";");
                                 $commentsNum = $result->fetch_row();
 
-                                if ($GLOBALS['news']['enableComments'] == true)
+                                if ($GLOBALS['news']['enableComments'] == TRUE)
                                 {
-                                    $comments = '| <a href="?p=news&amp;newsid=' . $row['id'] . '">Comments ('. $commentsNum[0] .')</a>';
+                                    $comments = '| <a href="?page=news&amp;newsid=' . $row['id'] . '">Comments ('. $commentsNum[0] .')</a>';
                                 }
                                 else
                                 {
@@ -128,7 +128,7 @@
                                 unset($newsPT2);
                             }
                         }
-                        echo "<br><hr/><a href='?p=news'>View older news...</a>";
+                        echo "<br><hr/><a href='?page=news'>View older news...</a>";
                         $Cache->buildCache("news", $output);
                     }
                 }
@@ -141,7 +141,7 @@
             global $Cache, $Connect;
             $conn = $Connect->connectToDB();
 
-            if ($Cache->exists("slideshow") == true)
+            if ($Cache->exists("slideshow") == TRUE)
             {
                 $Cache->loadCache("slideshow");
             }
@@ -151,7 +151,7 @@
                 $result = $conn->query("SELECT `path`, `link` FROM slider_images ORDER BY position ASC;");
                 while ($row = $result->fetch_assoc())
                 {
-                    echo $outPutPT = '<a href="'. $row['link'] .'"><img border="none" src="core/'. $row['path'] .'" alt="" class="slideshow_image"></a>';
+                    echo $outPutPT = '<a href="'. htmlspecialchars($row['link']) .'"><img border="none" src="core/'. htmlspecialchars($row['path']) .'" alt="" class="slideshow_image"></a>';
                     $output   .= $outPutPT;
                 }
                 $Cache->buildCache('slideshow', $output);
@@ -169,7 +169,7 @@
 
             while ($row = $result->fetch_assoc())
             {
-                echo '<a href="#" rel="' . $x . '">' . $x . '</a>';
+                echo '<a href="#" rel="'. htmlspecialchars($x) .'">'. htmlspecialchars($x) .'</a>';
                 $x++;
             }
             
@@ -260,7 +260,7 @@
             }
             else
             {
-                return true;
+                return TRUE;
             }
         }
 

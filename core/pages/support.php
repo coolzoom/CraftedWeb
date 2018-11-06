@@ -30,12 +30,12 @@ global $Support;
 <table class='splashWebformLink'>
     <tr>
         <td>
-            <a href="?p=support&do=email">
+            <a href="?page=support&do=email">
                 <span class="splashWebformLogo"></span>
                 <span class="webformText">Email Support</span></a>
         </td>
         <td>
-            <a href="?p=support&do=faq">
+            <a href="?page=support&do=faq">
                 <span class="splashWebformLogo"></span>
                 <span class="webformText">FaQ</span></a>
         </td>

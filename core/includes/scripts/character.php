@@ -20,7 +20,7 @@
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
 
-    require('../ext_scripts_class_loader.php');
+    require "../ext_scripts_class_loader.php";
 
     global $Connect, $Server, $Character, $Account;
     $conn = $Connect->connectToDB();
@@ -298,7 +298,7 @@
                 echo $GLOBALS['service']['teleport']['price'] . " " . $GLOBALS['donation']['coins_name'] . " was taken from your account.";
             }
             $Account->logThis("Teleported " . $Character->getCharName($character, $realm_id) . " to " . $location, 'Teleport', $realm_id);
-            echo true;
+            echo TRUE;
         }
     }
 
@@ -309,7 +309,7 @@
         $serviceX = $conn->escape_string($_POST['service']);
 
 
-        if ($Character->isOnline($guid) == true)
+        if ($Character->isOnline($guid) == TRUE)
         {
             die('<b class="red_text">Please log out your character before proceeding.');
         }
@@ -355,19 +355,19 @@
                 break;
         }
 
-        $Connect->selectDB('webdb', $conn);
+        $Connect->selectDB("webdb", $conn);
         $getRA = $conn->query("SELECT sendType, host, ra_port, soap_port, rank_user, rank_pass FROM realms WHERE id=". $realm_id .";");
         $row   = $getRA->fetch_assoc();
 
         if ($row['sendType'] == 'ra')
         {
-            require('../misc/ra.php');
+            require "../misc/ra.php";
 
             sendRa("character " . $command . " " . $Character->getCharname($guid, $realm_id), $row['rank_user'], $row['rank_pass'], $row['host'], $row['ra_port']);
         }
         elseif ($row['sendType'] == "soap")
         {
-            require('../misc/soap.php');
+            require "../misc/soap.php";
 
             sendSoap("character " . $command . " " . $Character->getCharname($guid, $realm_id), $row['rank_user'], $row['rank_pass'], $row['host'], $row['soap_port']);
         }
@@ -384,6 +384,6 @@
 
         $Account->logThis("Performed a " . $info . " on " . $Character->getCharName($guid, $realm_id), $serviceX, $realm_id);
 
-        echo true;
+        echo TRUE;
     }
 ?>

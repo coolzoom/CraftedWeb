@@ -58,7 +58,7 @@
             </tr>
         </table>
         <hr/>
-        <a href="?p=shop&s=add" class="content_hider">Add Items</a>
-        <a href="?p=shop&s=manage" class="content_hider">Manage Items</a>
-        <a href="?p=shop&s=tools" class="content_hider">Tools</a>
+        <a href="?page=shop&selected=add" class="content_hider">Add Items</a>
+        <a href="?page=shop&selected=manage" class="content_hider">Manage Items</a>
+        <a href="?page=shop&selected=tools" class="content_hider">Tools</a>
     <?php }

@@ -26,14 +26,14 @@
 
     ## ------------------------##
     ## Please note that:       ##
-    ## true = Enabled          ##
+    ## TRUE = Enabled          ##
     ## false = Disabled        ##
     #############################
 
     /*     * ********************** */
     /* General settings      
       /************************ */
-    $useDebug = false; //If you are having problems with your website, set this to "true", if not, set to "false". 
+    $useDebug = false; //If you are having problems with your website, set this to "TRUE", if not, set to "false". 
     //All errors will be logged and visible in "includes/error-log.php". If set to false, error log will be blank. 
     //This will also enable/disable errors on the Admin- & Staff panel.
 
@@ -49,7 +49,7 @@
     //Example: http://yourserver.com/
     //If you have your website in a sub-directory, include that aswell. Ex: http://yourserver.com/cataclysm/
 
-    $showLoadTime = true;
+    $showLoadTime = TRUE;
     //Shows the page load time in the footer.
 
     $footer_text = "Copyright &copy; CraftedWeb ".date('Y')." <br/>
@@ -65,8 +65,8 @@
     // 2 = Wrath of The Lich King
     // 3 = Cataclysm
 
-    $adminPanel_enable = true; //Enable or disable the Administrator Panel. 
-    $staffPanel_enable = true; //Enable or disable the Staff Panel. 
+    $adminPanel_enable = TRUE; //Enable or disable the Administrator Panel. 
+    $staffPanel_enable = TRUE; //Enable or disable the Staff Panel. 
 
     $adminPanel_minlvl = 5; //Minimum gm level of which accounts are able to log in to the Admin Panel. Default: 5
     $staffPanel_minlvl = 3; //Minimum gm level of which accounts are able to log in to the Staff Panel. Default: 3
@@ -75,14 +75,14 @@
     $staffPanel_permissions['News']                  = false;
     $staffPanel_permissions['Shop']                  = false;
     $staffPanel_permissions['Donations']             = false;
-    $staffPanel_permissions['Logs']                  = true;
+    $staffPanel_permissions['Logs']                  = TRUE;
     $staffPanel_permissions['Interface']             = false;
-    $staffPanel_permissions['Users']                 = true;
+    $staffPanel_permissions['Users']                 = TRUE;
     $staffPanel_permissions['Realms']                = false;
     $staffPanel_permissions['Services']              = false;
-    $staffPanel_permissions['Tools->Tickets']        = true;
+    $staffPanel_permissions['Tools->Tickets']        = TRUE;
     $staffPanel_permissions['Tools->Account Access'] = false;
-    $staffPanel_permissions['editNewsComments']      = true;
+    $staffPanel_permissions['editNewsComments']      = TRUE;
     $staffPanel_permissions['editShopItems']         = false;
 
     //Pages = Disable/Enable pages & Create custom pages.
@@ -99,7 +99,7 @@
     //editNewsComments = Edit/Remove news comments.
     //editShopItems = Edit/Remove shop items.
 
-    $enablePlugins = true; //Enable or disable the use of plugins. Plugins May slow down your site a bit.
+    $enablePlugins = TRUE; //Enable or disable the use of plugins. Plugins May slow down your site a bit.
 
     /*     * ********************** */
     /* Slideshow settings 
@@ -110,8 +110,8 @@
     /* Website compression settings    
       /************************ */
 
-    $compression['gzip']            = true; //This is very hard to explain, but it may boost your website speed drastically.
-    $compression['sanitize_output'] = true; //This will strip all the whitespaces on the HTML code written. This should increase the website speed slightly. 
+    $compression['gzip']            = TRUE; //This is very hard to explain, but it may boost your website speed drastically.
+    $compression['sanitize_output'] = TRUE; //This will strip all the whitespaces on the HTML code written. This should increase the website speed slightly. 
     //And "copycats" will have a hard time stealing your HTML code :>
 
     $useCache = false; //Enable / Disable the use of caching. It's in early developement and is currently only applied to very few things in the core at the moment.
@@ -121,20 +121,20 @@
     /*     * ********************** */
     /* News settings   
       /************************ */
-    $news['enable']              = true; // Enable/Disable the use of the news system at the homepage. 
+    $news['enable']              = TRUE; // Enable/Disable the use of the news system at the homepage. 
     $news['maxShown']            = 2; //Maximum amount of news posts that will be shown on the home page.
     //People can still view all posts by clicking the "All news" button.
-    $news['enableComments']      = true; //Make people able to comment on your news posts.
+    $news['enableComments']      = TRUE; //Make people able to comment on your news posts.
     $news['limitHomeCharacters'] = false; //This will limit the characters shown in the news post. People will have to click the "Read more..." button
     //to read the whole news post. 
 
 
     /*     * *** Server status ***** */
-    $serverStatus['enable']         = true; //This will enable/disable the server status box.
+    $serverStatus['enable']         = TRUE; //This will enable/disable the server status box.
     $serverStatus['nextArenaFlush'] = false; //This will display the next arena flush for your realm(s).
-    $serverStatus['uptime']         = true; //This will display the uptime of your realm(s).
-    $serverStatus['playersOnline']  = true; //This will show current players online
-    $serverStatus['factionBar']     = true; //This will show the players online faction bar.
+    $serverStatus['uptime']         = TRUE; //This will display the uptime of your realm(s).
+    $serverStatus['playersOnline']  = TRUE; //This will show current players online
+    $serverStatus['factionBar']     = TRUE; //This will show the players online faction bar.
 
 
     /*     * ********************** */
@@ -193,7 +193,7 @@
     $donation['paypal_email']     = 'youremail@gmail.com';
     $donation['coins_name']       = 'Donations Coins';
     $donation['currency']         = 'USD';
-    $donation['emailResponse']    = true;
+    $donation['emailResponse']    = TRUE;
     $donation['sendResponseCopy'] = false;
     $donation['copyTo']           = 'youremail@gmail.com';
     $donation['responseSubject']  = 'Thanks for your support!';
@@ -203,7 +203,7 @@
     // coins_name = The name of the donation coins that the user will buy.
     // currency = The name of the currency that you want the user to pay with. Default: USD
     // emailResponse = Enabling this will make the donator to recieve a validation email after their donation, containing the donation information. 
-    // sendResponseCopy = Set this to "true" if you wish to recieve a copy of the email response mentioned above. 
+    // sendResponseCopy = Set this to "TRUE" if you wish to recieve a copy of the email response mentioned above. 
     // copyTo = Enable the sendResponseCopy to activate this function. Enter the email address of wich the payment copy will be sent to. 
     // responseSubject =  Enable the sendResponseCopy to activate this function. The subject of the email response sent to the donator.
     // donationType = How the user will donate. 1 = They can enter how many coins they wish to buy, and the value can be increased with the multiplier.
@@ -223,18 +223,18 @@
     /*     * ********************** */
     /* Vote & Donation shop settings
       /************************ */
-    $voteShop['enableShop']           = true;
-    $voteShop['enableAdvancedSearch'] = true;
+    $voteShop['enableShop']           = TRUE;
+    $voteShop['enableAdvancedSearch'] = TRUE;
     $voteShop['shopType']             = 1;
 
-    // enableShop = Enables/disables the use of the Vote Shop. "true" = enable, "false" = disable.
-    // enableAdvancedSearch = Enabled/disables the use of the advanced search feature. "true" = enable, "false" = disable.
+    // enableShop = Enables/disables the use of the Vote Shop. "TRUE" = enable, "false" = disable.
+    // enableAdvancedSearch = Enabled/disables the use of the advanced search feature. "TRUE" = enable, "false" = disable.
     // shopType = The type of shop you wish to use. 1 = "Search". 2 = List all items available.
 
 
     /*     * ********************** */
-    $donateShop['enableShop']           = true;
-    $donateShop['enableAdvancedSearch'] = true;
+    $donateShop['enableShop']           = TRUE;
+    $donateShop['enableAdvancedSearch'] = TRUE;
     $donateShop['shopType']             = 1;
 
     // Explanations can be found above.
@@ -245,7 +245,7 @@
     $social['enableFacebookModule'] = false;
     $social['facebookGroupURL']     = 'http://www.facebook.com/YourServer';
 
-    // enableFacebookModule = This will create a Facebook box to the left, below the server status. "true" = enable, "false" = disable.
+    // enableFacebookModule = This will create a Facebook box to the left, below the server status. "TRUE" = enable, "false" = disable.
     // facebookGroupURL = The full URL to your facebook group.
     // NOTE! This feature might be a little buggy due to the width of some themes. I wish you good luck though.
 
@@ -253,7 +253,7 @@
     /* Forum settings
       /************************ */
     $forum['type']              = 'phpbb';
-    $forum['autoAccountCreate'] = true;
+    $forum['autoAccountCreate'] = TRUE;
     $forum['forum_path']        = '/forum/';
     $forum['forum_db']          = 'phpbb';
 
@@ -309,20 +309,20 @@
     date_default_timezone_set($GLOBALS['timezone']);
 
     //Set the error handling.
-    if (file_exists('includes/classes/error.php'))
-        require('includes/classes/error.php');
+    if ( file_exists('includes/classes/error.php') )
+        require "includes/classes/error.php";
 
-    elseif (file_exists('../classes/error.php'))
-        require('../classes/error.php');
+    elseif ( file_exists('../classes/error.php') )
+        require "../classes/error.php";
 
-    elseif (file_exists('../includes/classes/error.php'))
-        require('../includes/classes/error.php');
+    elseif ( file_exists('../includes/classes/error.php') )
+        require "../includes/classes/error.php";
 
-    elseif (file_exists('../../includes/classes/error.php'))
-        require('../../includes/classes/error.php');
+    elseif ( file_exists('../../includes/classes/error.php') )
+        require "../../includes/classes/error.php";
 
-    elseif (file_exists('../../../includes/classes/error.php'))
-        require('../../../includes/classes/error.php');
+    elseif ( file_exists('../../../includes/classes/error.php') )
+        require "../../../includes/classes/error.php";
 
     loadCustomErrors(); //Load custom errors
 ?>

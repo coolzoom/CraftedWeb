@@ -21,7 +21,7 @@
 
     global $GameServer, $GamePage;
     $conn = $GameServer->connect();
-    $GameServer->selectDB('webdb', $conn);
+    $GameServer->selectDB("webdb", $conn);
 
     $GamePage->validatePageAccess('Logs');
 
@@ -36,7 +36,7 @@
 
       <pre>The Script Might Have Redirected You Wrong. Or... Did You Try To HACK!? Anyways, Good Luck..</pre>
 
-      <a href="?p=logs&s=voteshop" class="content_hider">Vote Shop logs</a>
-      <a href="?p=logs&s=donateshop" class="content_hider">Donation Shop logs</a>
+      <a href="?page=logs&selected=voteshop" class="content_hider">Vote Shop logs</a>
+      <a href="?page=logs&selected=donateshop" class="content_hider">Donation Shop logs</a>
       <?php
     }

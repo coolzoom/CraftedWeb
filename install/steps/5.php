@@ -47,11 +47,9 @@
           Administrator Password:
           <input type="password" placeholder="Default: adminpass" id="realm_access_password" required>
         </th>
-        
     </tr>
 
     <tr>
-        
         <th>
           Description:
           <input type="text" placeholder="Default: Blizzlike 1x" id="realm_description" required>

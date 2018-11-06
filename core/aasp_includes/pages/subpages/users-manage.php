@@ -43,7 +43,7 @@
             if ($get->num_rows > 0)
             {
                 $rows = $get->fetch_assoc();
-                echo "<a href='?p=users&s=manage&user=". $rows['account'] ."'>". $rows['name'] ." - ". $row['name'] ."</a><br/>";
+                echo "<a href='?page=users&selected=manage&user=". $rows['account'] ."'>". $rows['name'] ." - ". $row['name'] ."</a><br/>";
             }
             else
             {
@@ -88,10 +88,10 @@
                     <td><span class='blue_text'><?php echo $GLOBALS['donation']['coins_name']; ?></span></td>
                     <td><?php echo $GameAccount->getDP($row['id']); ?></td>
                 </tr>
-                <tr><td><a href='?p=users&s=manage&getlogs=<?php echo $row['id']; ?>'>Account Payments & Shop Logs</a><br />
-                        <a href='?p=users&s=manage&getslogs=<?php echo $row['id']; ?>'>Service Logs</a></td>
+                <tr><td><a href='?page=users&selected=manage&getlogs=<?php echo $row['id']; ?>'>Account Payments & Shop Logs</a><br />
+                        <a href='?page=users&selected=manage&getslogs=<?php echo $row['id']; ?>'>Service Logs</a></td>
                     <td></td>
-                    <td><a href='?p=users&s=manage&editaccount=<?php echo $row['id']; ?>'>Edit Account Information</a></tr>
+                    <td><a href='?page=users&selected=manage&editaccount=<?php echo $row['id']; ?>'>Edit Account Information</a></tr>
             </table>
             <hr/>
             <b>Characters</b><br/>
@@ -167,7 +167,7 @@
     elseif (isset($_GET['getlogs']))
     {
         ?>
-        Account Selected: <a href='?p=users&s=manage&user=<?php echo $_GET['getlogs']; ?>'><?php echo $GameAccount->getAccName($_GET['getlogs']); ?></a><p />
+        Account Selected: <a href='?page=users&selected=manage&user=<?php echo $_GET['getlogs']; ?>'><?php echo $GameAccount->getAccName($_GET['getlogs']); ?></a><p />
 
         <h4 class='payments' onclick='loadPaymentsLog(<?php echo $conn->escape_string($_GET['getlogs']); ?>)'>Payments Log</h4>
         <div class='hidden_content' id='payments'></div>
@@ -181,7 +181,7 @@
     }
     elseif (isset($_GET['editaccount']))
     {
-        ?>Account Selected: <a href='?p=users&s=manage&user=<?php echo $_GET['editaccount']; ?>'><?php echo $GameAccount->getAccName($_GET['editaccount']); ?></a><p />
+        ?>Account Selected: <a href='?page=users&selected=manage&user=<?php echo $_GET['editaccount']; ?>'><?php echo $GameAccount->getAccName($_GET['editaccount']); ?></a><p />
         <table width="100%">
             <input type="hidden" id="account_id" value="<?php echo $_GET['editaccount']; ?>" />
             <tr>
@@ -212,7 +212,7 @@
     {
         $getLogs = $conn->escape_string($_GET['getslogs']);
         ?>
-        Account Selected: <a href='?p=users&s=manage&user=<?php echo $getLogs; ?>'><?php echo $GameAccount->getAccName($getLogs); ?></a><p />
+        Account Selected: <a href='?page=users&selected=manage&user=<?php echo $getLogs; ?>'><?php echo $GameAccount->getAccName($getLogs); ?></a><p />
         <table>
             <tr>
                 <th>Service</th>
@@ -221,7 +221,7 @@
                 <th>Date</th>
             </tr>
             <?php
-            $GameServer->selectDB('webdb', $conn);
+            $GameServer->selectDB("webdb", $conn);
             $result = $conn->query("SELECT * FROM user_log WHERE account=". $getLogs .";");
             if ($result->num_rows == 0)
             {

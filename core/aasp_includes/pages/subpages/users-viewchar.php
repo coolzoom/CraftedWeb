@@ -39,7 +39,7 @@ Selected Character:  <?php echo $GameAccount->getCharName($_GET['guid'], $_GET['
     <tr>
         <td>Account</td>
         <td><input type="text" value="<?php echo $GameAccount->getAccName($row['account']); ?>" class="noremove" id="editchar_accname"/>
-            <a href="?p=users&s=manage&user=<?php echo strtolower($GameAccount->getAccName($row['account'])); ?>">View</a></td>
+            <a href="?page=users&selected=manage&user=<?php echo strtolower($GameAccount->getAccName($row['account'])); ?>">View</a></td>
     </tr>
     <tr>
         <td>Race</td>

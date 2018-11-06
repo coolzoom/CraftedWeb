@@ -235,7 +235,7 @@
 
 
                                     if (isset($_SESSION['cw_gmlevel']) && $_SESSION['cw_gmlevel'] >= $GLOBALS['adminPanel_minlvl'] ||
-                                        isset($_SESSION['cw_gmlevel']) && $_SESSION['cw_gmlevel'] >= $GLOBALS['staffPanel_minlvl'] && $GLOBALS['editShopItems'] == true)
+                                        isset($_SESSION['cw_gmlevel']) && $_SESSION['cw_gmlevel'] >= $GLOBALS['staffPanel_minlvl'] && $GLOBALS['editShopItems'] == TRUE)
                                     {
                                         ?>
                                         <font size="-2">( 
@@ -279,7 +279,7 @@
         {
             global $Connect;
             $conn = $Connect->connectToDB();
-            $Connect->selectDB('webdb', $conn);
+            $Connect->selectDB("webdb", $conn);
 
             $shop = $conn->escape_string($shop);
 
@@ -394,7 +394,7 @@
         {
             global $Connect;
             $conn = $Connect->connectToDB();;
-            $Connect->selectDB('webdb', $conn);
+            $Connect->selectDB("webdb", $conn);
 
             date_default_timezone_set($GLOBALS['timezone']);
 

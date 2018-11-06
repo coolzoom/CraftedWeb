@@ -54,7 +54,7 @@
 <div class="box_right">
     <div class="box_right_title">Admin Panel Log</div>
     <?php
-        $GameServer->selectDB('webdb', $conn);
+        $GameServer->selectDB("webdb", $conn);
         $result = $conn->query("SELECT * FROM admin_log ORDER BY id DESC LIMIT 25;");
         if ($result->num_rows == 0)
         {
@@ -78,6 +78,6 @@
                     </tr>
           <?php } ?>
             </table><br/>
-            <a href="?p=logs&s=admin" title="Get more logs">Older Logs...</a>
+            <a href="?page=logs&selected=admin" title="Get more logs">Older Logs...</a>
     <?php } ?>
 </div>

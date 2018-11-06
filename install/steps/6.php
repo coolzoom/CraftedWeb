@@ -31,9 +31,3 @@
     <code><b>How do I customize my website even further?</b> There's alot more options to explore in the configuration file, and on the Admin panel. Open the <i>includes/configuration.php</i> file to customize Alot more. Everything should be explained there, so don't worry, you will understand what all settings are for. 
         (* Tip: Do not use regular Windows notepad, since the file will look very wierd with notepad. ).</code>
 </p>
-
-<?php 
-
-    print_r($_SESSION);
-
-    ?>

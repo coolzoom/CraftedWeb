@@ -21,7 +21,7 @@
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
 
-    include('core/documents/alert.php');
+    include "core/documents/alert.php";
 
     if ($alert_enabled)
     {

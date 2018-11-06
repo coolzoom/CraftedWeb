@@ -19,7 +19,7 @@
 #                  anywhere unless you were given permission.                 
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
-    if ($GLOBALS['enableSlideShow'] == TRUE && !isset($_COOKIE['hideslider']) && $_GET['p'] == 'home')
+    if ($GLOBALS['enableSlideShow'] == TRUE && !isset($_COOKIE['hideslider']) && $_GET['page'] == 'home')
     {
         global $Website;
         ?>

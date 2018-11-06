@@ -6,3 +6,5 @@
 /staff/error.log
 /core/aasp_includes/scripts/error.log
 /test.php
+/installed
+/.vscode/*

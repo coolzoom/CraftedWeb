@@ -22,7 +22,7 @@
 
     global $Connect;
     $conn = $Connect->connectToDB();
-    $Connect->selectDB('webdb', $conn);
+    $Connect->selectDB("webdb", $conn);
 
     if (!isset($_SESSION['cw_user']))
     {
@@ -42,7 +42,7 @@
     while ($row = $getMenuLinks->fetch_assoc())
     {
         $curr = substr($row['url'], 3);
-        if ($_GET['p'] == $curr)
+        if ($_GET['page'] == $curr)
         {
             echo '<a href="' . $row['url'] . '" class="current">' . $row['title'] . '</a>';
         }

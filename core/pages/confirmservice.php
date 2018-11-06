@@ -85,7 +85,7 @@
 
         $Account->isNotLoggedIn();
 
-        $Connect->selectDB('webdb', $conn);
+        $Connect->selectDB("webdb", $conn);
         $result = $conn->query("SELECT name FROM realms WHERE id=". $realm_id .";");
         $row    = $result->fetch_assoc();
         $realm  = $row['name'];

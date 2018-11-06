@@ -50,7 +50,7 @@ Let's you reset the instance on your characters.<hr/>
         ?>
         Select realm: 
         &nbsp;
-        <form action="?p=instancereset" method="post">
+        <form action="?page=instancereset" method="post">
             <table>
                 <tr>
                     <td>
@@ -89,7 +89,7 @@ Let's you reset the instance on your characters.<hr/>
             ?>
             Select character: 
             &nbsp;
-            <form action="?p=instancereset" method="post">
+            <form action="?page=instancereset" method="post">
                 <table>
                     <tr>
                         <td>
@@ -129,7 +129,7 @@ Let's you reset the instance on your characters.<hr/>
         ?>
         Select instance: 
         &nbsp;
-        <form action="?p=instancereset" method="post">
+        <form action="?page=instancereset" method="post">
             <table>
                 <tr>
                     <td>
@@ -144,7 +144,7 @@ Let's you reset the instance on your characters.<hr/>
                             if ($result->num_rows == 0)
                             {
                                 echo "<option value='#'>No instance locks were found</option>";
-                                $nope = true;
+                                $nope = TRUE;
                             }
                             else
                             {
@@ -153,7 +153,7 @@ Let's you reset the instance on your characters.<hr/>
                                     $getI     = $conn->query("SELECT id, map, difficulty FROM instance WHERE id=". $row['instance'] .";");
                                     $instance = $getI->fetch_assoc();
 
-                                    $Connect->selectDB('webdb', $conn);
+                                    $Connect->selectDB("webdb", $conn);
                                     $getName = $conn->query("SELECT name FROM instance_data WHERE map='" . $instance['map'] . "';");
                                     $name    = $getName->fetch_assoc();
 
@@ -233,4 +233,4 @@ Let's you reset the instance on your characters.<hr/>
     }
 ?>
 <br/>
-<a href="?p=instancereset">Start over</a>
+<a href="?page=instancereset">Start over</a>

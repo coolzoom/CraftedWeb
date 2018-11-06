@@ -21,12 +21,11 @@
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
 
-    require('../ext_scripts_class_loader.php');
+    require "../ext_scripts_class_loader.php";
 
     global $Connect, $Account;
     $conn = $Connect->connectToDB();
-
-    $Connect->selectDB('logondb', $conn);
+    $Connect->selectDB("logondb", $conn);
 
     if (isset($_POST['register']))
     {
@@ -47,14 +46,13 @@
         {
             $username = $conn->escape_string($_POST['value']);
 
-            $result = $conn->query("SELECT COUNT(id) FROM account WHERE username='". $username ."';");
-            if ($result->data_seek(0) == 1)
+            if ($conn->query("SELECT * FROM account WHERE username='". $username ."';")->num_rows > 0)
             {
-                echo "<i class='green_text'>This username is available</i>";
+                echo "<i class='red_text'>This username is not available</i>";
             }
             else
             {
-                echo "<i class='red_text'>This username is not available</i>";
+                echo "<i class='green_text'>This username is available</i>";
             }
         }
     }

@@ -20,9 +20,9 @@
 #                  anywhere unless you were given permission.                 
 #                  � Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
-    function sendRA($command, $ra_user, $ra_pass, $server, $realm_port)
+    function send_ra($command, $ra_user, $ra_pass, $server, $realm_port)
     {
-        $telnet = @fsockopen($server, $realm_port, $error, $error_str, 3);
+        $telnet = @fsockopen($server, $realm_port, $error, $error_string, 3);
         if ($telnet)
         {
             fgets($telnet, 1024);
@@ -38,7 +38,7 @@
         }
         else
         {
-            die('Connection problems...Aborting | Error: ' . $error_str);
+            die('Connection problems...Aborting | Error: ' . $error_string);
         }
     }
     

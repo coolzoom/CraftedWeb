@@ -42,7 +42,7 @@ Choose the character you wish to unstuck. The character will be teleported to yo
     }
 
     $Account->isNotLoggedIn();
-    $Connect->selectDB('webdb', $conn);
+    $Connect->selectDB("webdb", $conn);
     $num    = 0;
     $result = $conn->query("SELECT char_db, name FROM realms ORDER BY id ASC;");
     while ($row = $result->fetch_assoc())
